@@ -1,38 +1,217 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.cdnfonts.com/css/avenir");
+
+:root {
+  font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Avenir", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  background-color: #16151a;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-poster-shadow,
+.dropdown-shadow {
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2),
+    0 0.3rem 0.3rem rgba(0, 0, 0, 0.2), 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2),
+    0 0.7rem 0.7rem rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  transition: color 0.15s ease 0s, background-color 0.15s ease 0s;
+}
+
+.suggested-dropdown {
+  width: 96%;
+}
+
+.suggested-dropdown ul li:not(:last-child) {
+  border-bottom: 1px solid #252525;
+}
+
+.Spinner-spinner {
+  border: 2px solid;
+  border-radius: 50%;
+  border-color: #fff transparent;
+  animation: Spinner-rotation 1s linear infinite;
+}
+
+#filter .react-select__control {
+  font-size: 0.9375rem;
+  background-color: #2d2c32;
+  border-color: #2d2c32;
+  box-shadow: none;
+}
+
+#filter .react-select__value-container {
   display: flex;
-  flex-direction: column;
+}
+
+#filter .react-select__placeholder {
+  position: absolute;
+  top: 50%;
+  color: #fff;
+  opacity: 1;
+  transition: opacity 260ms ease 0s;
+  transform: translateY(-50%);
+}
+
+#filter .react-select__input-container {
+  display: grid;
+  flex: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  visibility: visible;
+}
+
+#filter .react-select__input {
+  box-sizing: content-box;
+  width: 2px;
+  background: 0px center;
+  border: 0px;
+  font-size: inherit;
+  opacity: 1;
+  outline: 0px;
+  padding: 0px;
+  color: inherit;
+}
+
+#filter .react-select__indicator-separator {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#filter .react-select__indicator {
+  color: rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 8px;
+  -webkit-transition: color 150ms;
+  transition: color 150ms;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+#filter .react-select__indicator:hover {
+  color: #fff;
+}
+
+#filter .react-select__multi-value {
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+#filter .react-select__multi-value__label {
+  color: rgb(22, 21, 26);
+  font-size: 85%;
+  border-radius: 0;
+  overflow: hidden;
+  padding: 3px 3px 3px 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-weight: 600;
+  background-color: rgb(255, 255, 77);
+}
+
+#filter .react-select__multi-value__remove {
+  -webkit-box-align: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: rgb(22, 21, 26);
+  display: flex;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  transition: color 0.15s ease 0s;
 }
 
-.App-link {
-  color: #61dafb;
+#filter .react-select__multi-value__remove:hover {
+  color: rgb(255, 46, 46);
+  background-color: rgb(22, 21, 26);
 }
 
-@keyframes App-logo-spin {
-  from {
+#filter .react-select__menu {
+  top: 100%;
+  background-color: rgb(17, 16, 20);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0.1rem 0.1rem,
+    rgba(0, 0, 0, 0.2) 0px 0.3rem 0.3rem, rgba(0, 0, 0, 0.2) 0px 0.5rem 0.5rem,
+    rgba(0, 0, 0, 0.2) 0px 0.7rem 0.7rem;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+  box-sizing: border-box;
+}
+
+#filter .react-select__menu-list {
+  padding: 0;
+}
+
+#filter .react-select__option {
+  background-color: rgb(17, 16, 20);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: block;
+  font-size: 0.9375rem;
+  padding: 8px 12px;
+  width: 100%;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  transition: color 0.15s ease 0s, background-color 0.15s ease 0s;
+}
+
+#filter .react-select__option:hover {
+  background-color: rgb(45, 44, 50);
+  color: rgb(255, 255, 255);
+}
+
+#filter .react-select__control--is-focused {
+  background-color: rgb(45, 44, 50);
+  border-color: currentColor;
+}
+
+@keyframes Spinner-rotation {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@media (min-width: 576px) {
+  .suggested-dropdown {
+    width: calc(100% - 3rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .suggested-dropdown ul li a img {
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2),
+      0 0.3rem 0.3rem rgba(0, 0, 0, 0.2), 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2),
+      0 0.7rem 0.7rem rgba(0, 0, 0, 0.2);
   }
 }
