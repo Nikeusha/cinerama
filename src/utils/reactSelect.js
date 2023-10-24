@@ -7,7 +7,7 @@ export const options = [
     label: "Action",
   },
   {
-    value: "2",
+    value: "12",
     label: "Adventure",
   },
   {

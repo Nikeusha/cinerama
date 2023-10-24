@@ -14,6 +14,7 @@ function Main() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setGenre(selectedOptions.map((option) => option.value).join(","));
+    setPage(1)
   };
 
   const handleSelect = (selected) => {
@@ -22,7 +23,8 @@ function Main() {
 
   const handleReset = (e) => {
     e.preventDefault();
-    setSelectedOptions("");
+    setSelectedOptions([]);
+    setPage(1)
     setGenre("");
   };
 
