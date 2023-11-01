@@ -145,7 +145,7 @@ function Header() {
                         onClick={() => setToggleSearch(false)}
                         className="flex justify-between hover:text-[#16151a] hover:bg-[#ffff4d] items-center py-[0.5rem] px-[1rem] text-white rounded-[0_0_4px_4px] bg-[#1d1c20] no-underline outline-0 "
                       >
-                        {"Все результаты "}
+                        {"All results "}
                         <svg
                           viewBox="0 0 17 12"
                           fill="currentColor"
