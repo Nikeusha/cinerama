@@ -69,7 +69,7 @@ function Main() {
                 <div className="flex justify-end">
                   <button
                     type="reset"
-                    disabled={selectedOptions.length === 0}
+                    disabled={selectedOptions.length === 0 && !genre}
                     className="inline-block mr-[1rem] disabled:pointer-events-none disabled:opacity-[.5] text-[#16151a] bg-[#ffff4d] border border-solid border-[#ffff4d] outline-none text-[.875rem] tracking-wider py-[0.3rem] px-[1.5rem] font-semibold rounded-[4px] transition-all duration-300 hover:bg-[#16151a] hover:text-[#ffff4d] "
                   >
                     Reset
